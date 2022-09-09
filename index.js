@@ -4,6 +4,7 @@ const { connectDB } = require("./db/db.connect");
 const { videosRouter } = require("./routes/videos.route");
 const { videoCategoryRouter } = require("./routes/categories.route");
 const { authRouter } = require("./routes/auth.route");
+const { userRouter } = require("./routes/user.route");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 app.use("/api/videos", videosRouter);
 app.use("/api/categories", videoCategoryRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
 
 app.use(function (req, res) {
 	res.status(404).json({ message: "404 route not found!" });
