@@ -12,7 +12,13 @@ const userSchema = new Schema({
     likes: Array,
     watchlater: Array,
     history: Array,
-    playlists: Array
+    playlists: [{
+        _id: String,
+        title: String,
+        videos: Array,
+        createdAt: Date,
+        updatedAt: Date
+    }]
 });
 
 const User = mongoose.model("User", userSchema);
