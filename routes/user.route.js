@@ -5,7 +5,7 @@ const { getLikedVideosHandler, addItemToLikedVideosHandler, removeItemFromLikedV
 const { getWatchLaterVideosHandler, addItemToWatchLaterHandler, removeItemFromWatchLaterHandler } = require("../controllers/watchLater.controller");
 const { getWatchHistoryHandler, addItemToWatchHistoryHandler, removeItemFromWatchHistoryHandler, clearWatchHistoryHandler } = require("../controllers/watchHistory.controller");
 const { getPlaylistsHandler, addNewPlaylistHandler, removePlaylistHandler, getVideosFromPlaylistHandler, addVideoToPlaylistHandler, removeVideoFromPlaylistHandler } = require("../controllers/playlist.controller");
-const { getUserAccountData } = require("../controllers/userAccount.controller");
+const { getUserAccountData, updateUserAccountData } = require("../controllers/userAccount.controller");
 
 // routes related to user's liked videos
 userRouter.route("/likes")
@@ -47,6 +47,7 @@ userRouter.route("/playlists/:playlistId/:videoId")
 
 // routes related to user account
 userRouter.route("/account")
-    .get(authVerify, getUserAccountData);
+    .get(authVerify, getUserAccountData)
+    .post(authVerify, updateUserAccountData);
 
 module.exports = { userRouter };
